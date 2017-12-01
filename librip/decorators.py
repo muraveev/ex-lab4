@@ -35,3 +35,22 @@
 # test_4
 # 1
 # 2
+
+
+def print_result(func, *arg):
+
+    def decorated_function(*arg):
+        result = func(*arg)
+        print(func.__name__)
+        if type(result) is dict:
+            for key, value in result.items():
+                print("%s=%s" % (str(key), str(value)))
+        elif type(result) is list:
+            for i in result:
+                print(i)
+        else:
+            print(result)
+        return result
+
+    return decorated_function
+
